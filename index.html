@@ -43,7 +43,7 @@
 </head>
 <body>
     <marquee behavior="scroll" direction="left">ENTER BY USING CODE</marquee>
-    <marquee behavior="scroll" direction="right">LEAVE THE SITE NOW! RISK DETECTED!</marquee>
+    <marquee behavior="scroll" direction="right">ENTER BY USING CODE</marquee>
     
     <div class="container">
         <h2>Authentication Required</h2>
@@ -51,21 +51,23 @@
         <button onclick="checkAnswer()">Submit</button>
         <p id="warning-message" class="warning">⚠️ WARNING: Unauthorized Access Attempt Detected!</p>
     </div>
-
+ <marquee behavior="scroll" direction="left">LEAVE THE SITE NOW! RISK DETECTED!</marquee>
+    <marquee behavior="scroll" direction="right">ENTER BY USING CODE</marquee>
     <footer>
         © 2025 royalstar | Make the Future with advanced technology.
     </footer>
-    <marquee behavior="scroll" direction="left">LEAVE THE SITE NOW! RISK DETECTED!</marquee>
-    <marquee behavior="scroll" direction="right">ENTER BY USING CODE</marquee>
+
     <script>
         async function checkAnswer() {
             let userInput = document.getElementById("answer").value.trim();
             let hash = await sha256(userInput);
 
-
+          
             const correctHash = "3a32ea6c9d67ea7061a369bf399272a5d161a9e30b1f642ca787ee2f0b284c85";
 
             if (hash === correctHash) {
+                document.body.style.backgroundColor = "black"; // Reset background color
+                document.getElementById("warning-message").style.display = "none"; // Hide warning
                 window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
             } else {
                 document.body.style.backgroundColor = "red"; // Turn the site red
