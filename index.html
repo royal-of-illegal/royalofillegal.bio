@@ -36,7 +36,7 @@
     
     <div class="container">
         <h2>Authentication Required</h2>
-        <input type="text" id="answer" placeholder="Enter Code">
+        <input type="password" id="answer" placeholder="Enter Code">
         <button onclick="checkAnswer()">Submit</button>
     </div>
 
@@ -45,28 +45,16 @@
     </footer>
 
     <script>
-        async function checkAnswer() {
-            let userInput = document.getElementById("answer").value;
-            let hash = await sha256(userInput);
-
-            // SHA-256 hash of "deepikadivyamanjula"
-            const correctHash = "3a32ea6c9d67ea7061a369bf399272a5d161a9e30b1f642ca787ee2f0b284c85";
-
-            if (hash === correctHash) {
-                setTimeout(() => {
-                    window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
-                }, 1000);
+        function checkAnswer() {
+            let userInput = document.getElementById("answer").value.trim();
+            
+            if (userInput === "deepikadivyamanjula") {
+                window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
             }
-        }
-
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         }
     </script>
 </body>
 </html>
+
 
 
