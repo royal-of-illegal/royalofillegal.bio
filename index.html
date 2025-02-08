@@ -61,8 +61,8 @@
             let userInput = document.getElementById("answer").value.trim();
             let hash = await sha256(userInput);
 
-          
-            const correctHash = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd8f48e99b79f7d0a92";
+            // Correct password hash: SHA-256 of "deepikadivyamanjula"
+            const correctHash = "ecbf7d2792424a6ffbafff5bc95e8ff7938b6c1763bbedb2df8b0985cd14d835";
 
             let warning = document.getElementById("warning-message");
 
