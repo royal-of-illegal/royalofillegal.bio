@@ -7,15 +7,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>royal-of-illegal Access</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
             text-align: center;
             background-color: black;
             color: lime;
@@ -70,96 +61,17 @@
             let userInput = document.getElementById("answer").value.trim();
             let hash = await sha256(userInput);
 
-            const correctHash = "3a32ea6c9d67ea7061a369bf399272a5d161a9e30b1f642ca787ee2f0b284c85";
-
-            let warning = document.getElementById("warning-message");
-
-            if (hash === correctHash) {
-                warning.style.display = "none"; // Ensure warning is hidden
-                document.body.style.backgroundColor = "black"; // Reset background
-                setTimeout(() => {
-                    window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/"; // Redirect
-                }, 500);
-            } else {
-                document.body.style.backgroundColor = "red"; // Turn site red
-                warning.style.display = "block"; // Show warning
-                alert("⚠️ WARNING: Unauthorized Access Attempt Detected!"); // Alert user
-            }
-        }
-
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-    </script>
-</body>
-</html>
-
-            background-color: black;
-            color: lime;
-            padding: 50px;
-            transition: background 0.5s ease;
-        }
-        .container {
-            background: #111;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px lime;
-            max-width: 500px;
-            margin: auto;
-        }
-        input, button {
-            margin-top: 10px;
-            padding: 10px;
-            width: 80%;
-            background: black;
-            color: lime;
-            border: 1px solid lime;
-        }
-        .warning {
-            color: red;
-            font-weight: bold;
-            margin-top: 20px;
-            display: none;
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-    </style>
-</head>
-<body>
-    <marquee behavior="scroll" direction="left">ENTER BY USING CODE</marquee>
-    <marquee behavior="scroll" direction="right">ENTER BY USING CODE</marquee>
-    
-    <div class="container">
-        <h2>Authentication Required</h2>
-        <input type="password" id="answer" placeholder="Enter Code">
-        <button onclick="checkAnswer()">Submit</button>
-        <p id="warning-message" class="warning">⚠️ WARNING: Unauthorized Access Attempt Detected!</p>
-    </div>
-
-    <footer>
-        © 2025 royalstar | Make the Future with advanced technology.
-    </footer>
-
-    <script>
-        async function checkAnswer() {
-            let userInput = document.getElementById("answer").value.trim();
-            let hash = await sha256(userInput);
-
-           
+          
             const correctHash = "3a32ea6c9d67ea7061a369bf399272a5d161a9e30b1f642ca787ee2f0b284c85";
 
             let warning = document.getElementById("warning-message");
 
             if (hash === correctHash) {
                 warning.style.display = "none"; // Hide warning
-                window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/"; // Directly redirect
+                document.body.style.backgroundColor = "black"; // Reset background
+                window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/"; // Redirect immediately
             } else {
-                document.body.style.backgroundColor = "red"; // Turn the site red
+                document.body.style.backgroundColor = "red"; // Turn site red
                 warning.style.display = "block"; // Show warning
                 alert("⚠️ WARNING: Unauthorized Access Attempt Detected!"); // Alert user
             }
