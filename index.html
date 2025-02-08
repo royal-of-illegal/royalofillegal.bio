@@ -53,20 +53,15 @@
     </footer>
 
     <script>
-        async function checkAnswer() {
+        function checkAnswer() {
             let userInput = document.getElementById("answer").value.trim();
-            let hash = await sha256(userInput);
-
-            // Correct 
-            const correctHash = "646579c0b430009d7dcb51299d03e646b18a593a28f24b6800583b174dc2b698";
-
             let warning = document.getElementById("warning-message");
 
-            if (hash === correctHash) {
+            if (userInput === "royaofillegalddm") {
                 warning.style.display = "none"; // Hide warning
                 document.body.style.backgroundColor = "black"; // Keep normal background
                 
-                // Redirect instantly
+                // Redirect to GitHub page
                 setTimeout(function () {
                     window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
                 }, 1000);
@@ -79,15 +74,9 @@
                 }, 3000);
             }
         }
-
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-        }
     </script>
 </body>
 </html>
+
 
 
