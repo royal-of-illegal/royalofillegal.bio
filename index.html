@@ -61,15 +61,17 @@
             let userInput = document.getElementById("answer").value.trim();
             let hash = await sha256(userInput);
 
- 
-            const correctHash = "ecbf7d2792424a6ffbafff5bc95e8ff7938b6c1763bbedb2df8b0985cd14d835";
+            
+            const correctHash = "e3f46272f598a39e291d872edcfe3342ed42a783e24214e572d6a6334faef06a";
 
             let warning = document.getElementById("warning-message");
 
             if (hash === correctHash) {
                 warning.style.display = "none"; // Hide warning
                 document.body.style.backgroundColor = "black"; // Reset background
-                window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/"; // Redirect immediately
+                setTimeout(() => {
+                    window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
+                }, 1000); // Redirect after 1 second
             } else {
                 document.body.style.backgroundColor = "red"; // Turn site red
                 warning.style.display = "block"; // Show warning
@@ -86,5 +88,6 @@
     </script>
 </body>
 </html>
+
 
 
