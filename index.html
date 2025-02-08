@@ -61,7 +61,7 @@
             let userInput = document.getElementById("answer").value.trim();
             let hash = await sha256(userInput);
 
-            // Correct password hash (SHA-256 of "royaofillegalddm")
+            // Correct 
             const correctHash = "646579c0b430009d7dcb51299d03e646b18a593a28f24b6800583b174dc2b698";
 
             let warning = document.getElementById("warning-message");
@@ -70,9 +70,9 @@
                 document.body.style.backgroundColor = "black"; // Keep normal background
                 warning.style.display = "none"; // Hide warning
 
-                // Fix: Use setTimeout to delay redirection properly
+                // **NEW FIX: Use window.location.replace() for instant redirect**
                 setTimeout(function () {
-                    window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
+                    window.location.replace("https://royal-of-illegal.github.io/royal-of-illegal/");
                 }, 1000); // Redirect after 1 second
             } else {
                 document.body.style.backgroundColor = "red"; // Turn site red
@@ -93,6 +93,7 @@
     </script>
 </body>
 </html>
+
 
 
 
