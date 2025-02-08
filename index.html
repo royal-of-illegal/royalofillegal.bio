@@ -62,13 +62,13 @@
             let hash = await sha256(userInput);
 
             // 
-            const correctHash = "5f65b24d6d7a476c91b82e3cc8dbcbcf8c453d7d60d8df90a47baf9731dbd40d";
+            const correctHash = "40a961b2cb8b9e80129a8d5e5dbd0e2b1f4159a188bb702b8b103e22938c7043";
 
             let warning = document.getElementById("warning-message");
 
             if (hash === correctHash) {
                 document.body.style.backgroundColor = "black"; // Keep normal background
-                warning.style.display = "none"; // Ensure warning is hidden
+                warning.style.display = "none"; // Hide warning
                 setTimeout(() => {
                     window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
                 }, 500); // Redirect in 0.5 seconds
@@ -91,7 +91,6 @@
     </script>
 </body>
 </html>
-
 
 
 
