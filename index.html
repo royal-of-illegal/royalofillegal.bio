@@ -33,14 +33,15 @@
             color: red;
             font-weight: bold;
             margin-top: 20px;
-            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
     </style>
 </head>
 <body>
     <h2>Authentication Required</h2>
     <div class="container">
-        <input type="password" id="answer" placeholder="Enter Code">
+        <input type="password" id="answer" placeholder="Enter Code" onkeydown="handleKeyPress(event)">
         <button onclick="checkAnswer()">Submit</button>
         <p id="warning-message" class="warning">⚠️ WRONG PASSWORD! ACCESS DENIED! ⚠️</p>
     </div>
@@ -50,20 +51,31 @@
             let userInput = document.getElementById("answer").value.trim();
             let warning = document.getElementById("warning-message");
 
-            if (userInput === "royaofillegalddm") {
-                window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
+            if (userInput === atob("cm95YW9maWxsZWdhbGRkbQ==")) { // Base64 encoded password
+                document.body.style.backgroundColor = "green"; // Success indication
+                setTimeout(() => {
+                    window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
+                }, 1000); // Delay before redirect
             } else {
-                document.body.style.backgroundColor = "red"; // Turn site red
-                warning.style.display = "block"; // Show warning
-                setTimeout(function () {
-                    warning.style.display = "none"; // Hide warning after 3 seconds
-                    document.body.style.backgroundColor = "black"; // Reset background
+                document.body.style.backgroundColor = "red"; 
+                warning.style.opacity = "1"; // Show warning
+                
+                setTimeout(() => {
+                    warning.style.opacity = "0"; 
+                    document.body.style.backgroundColor = "black"; 
                 }, 3000);
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                checkAnswer();
             }
         }
     </script>
 </body>
 </html>
+
 
 
 
