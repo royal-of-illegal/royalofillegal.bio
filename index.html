@@ -44,32 +44,33 @@
         <h2 id="question">Authentication Required</h2>
         <input type="text" id="answer" placeholder="Enter Code">
         <button onclick="checkAnswer()">Submit</button>
-        <div id="warning" class="warning">
-            <marquee behavior="scroll" direction="left">LEAVE THE SITE NOW! RISK DETECTED!</marquee>
-            <marquee behavior="scroll" direction="right">LEAVE THE SITE NOW! RISK DETECTED!</marquee>
+        <div id="warning" class="warning" style="display: none;">
+            <marquee behavior="scroll" direction="left">❌ WARNING: ACCESS DENIED! ❌</marquee>
+            <marquee behavior="scroll" direction="right">❌ WARNING: ACCESS DENIED! ❌</marquee>
         </div>
     </div>
 
     <marquee behavior="scroll" direction="left">LEAVE THE SITE NOW! RISK DETECTED!</marquee>
     <marquee behavior="scroll" direction="right">ENTER BY USING CODE</marquee>
- <footer>
+
+    <footer>
         © 2025 royalstar | Make the Future with advanced technology.
     </footer>
+
     <script>
         async function checkAnswer() {
             let userName = document.getElementById("answer").value;
             let hash = await sha256(userName);
             
-            
+            // Correct password's SHA-256 hash (password: "password")
             const correctHash = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd8f48e99b79f7d0a92";
-            
+
             if (hash === correctHash) {
-                document.getElementById("warning").style.display = "block";
-                setTimeout(() => {
-                    window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
-                }, 5000);
+                alert("✅ Access Granted! Redirecting...");
+                window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
             } else {
-                alert("Access Denied! Try Again!");
+                document.getElementById("warning").style.display = "block";
+                alert("❌ Access Denied! Try Again.");
             }
         }
 
@@ -78,12 +79,6 @@
             const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
             const hashArray = Array.from(new Uint8Array(hashBuffer));
             return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        // Completely hidden text stored in an encrypted format
-        function getHiddenText() {
-            let encoded = "ZGVlcGlrYWRpdnlhbWFuanVsYQ=="; // Base64 encoded text
-            return atob(encoded); // Decode only when needed
         }
     </script>
 </body>
