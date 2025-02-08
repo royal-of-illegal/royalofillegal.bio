@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>royal-of-illegal Access</title>
+    <title>Secure Access</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,7 +53,7 @@
     </div>
 
     <footer>
-        © 2025 royalstar | Make the Future with advanced technology.
+        © 2025 royalstar | Secure Access System
     </footer>
 
     <script>
@@ -61,8 +61,8 @@
             let userInput = document.getElementById("answer").value.trim();
             let hash = await sha256(userInput);
 
-            
-            const correctHash = "e3f46272f598a39e291d872edcfe3342ed42a783e24214e572d6a6334faef06a";
+
+            const correctHash = "5f65b24d6d7a476c91b82e3cc8dbcbcf8c453d7d60d8df90a47baf9731dbd40d";
 
             let warning = document.getElementById("warning-message");
 
@@ -71,7 +71,7 @@
                 document.body.style.backgroundColor = "black"; // Reset background
                 setTimeout(() => {
                     window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
-                }, 1000); // Redirect after 1 second
+                }, 500); // Redirect in 0.5 seconds
             } else {
                 document.body.style.backgroundColor = "red"; // Turn site red
                 warning.style.display = "block"; // Show warning
@@ -88,6 +88,7 @@
     </script>
 </body>
 </html>
+
 
 
 
