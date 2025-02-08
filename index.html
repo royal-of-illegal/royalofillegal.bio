@@ -11,6 +11,7 @@
             background-color: black;
             color: lime;
             padding: 50px;
+            transition: background 0.5s ease;
         }
         .container {
             background: #111;
@@ -28,6 +29,12 @@
             color: lime;
             border: 1px solid lime;
         }
+        .warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -38,6 +45,7 @@
         <h2>Authentication Required</h2>
         <input type="password" id="answer" placeholder="Enter Code">
         <button onclick="checkAnswer()">Submit</button>
+        <p id="warning-message" class="warning">⚠️ WARNING: Unauthorized Access Attempt Detected!</p>
     </div>
 
     <footer>
@@ -45,12 +53,27 @@
     </footer>
 
     <script>
-        function checkAnswer() {
+        async function checkAnswer() {
             let userInput = document.getElementById("answer").value.trim();
+            let hash = await sha256(userInput);
+
             
-            if (userInput === "deepikadivyamanjula") {
+            const correctHash = "3a32ea6c9d67ea7061a369bf399272a5d161a9e30b1f642ca787ee2f0b284c85";
+
+            if (hash === correctHash) {
                 window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
+            } else {
+                document.body.style.backgroundColor = "red"; // Turn the site red
+                document.getElementById("warning-message").style.display = "block"; // Show warning
+                alert("⚠️ WARNING: Unauthorized Access Attempt Detected!"); // Alert user
             }
+        }
+
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         }
     </script>
 </body>
