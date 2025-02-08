@@ -61,12 +61,13 @@
             let userInput = document.getElementById("answer").value.trim();
             let hash = await sha256(userInput);
 
-         
+           
             const correctHash = "3a32ea6c9d67ea7061a369bf399272a5d161a9e30b1f642ca787ee2f0b284c85";
 
             let warning = document.getElementById("warning-message");
 
             if (hash === correctHash) {
+                warning.style.display = "none"; // Hide warning
                 window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/"; // Directly redirect
             } else {
                 document.body.style.backgroundColor = "red"; // Turn the site red
