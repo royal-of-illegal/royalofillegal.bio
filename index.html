@@ -44,14 +44,7 @@
         <h2 id="question">Authentication Required</h2>
         <input type="text" id="answer" placeholder="Enter Code">
         <button onclick="checkAnswer()">Submit</button>
-        <div id="warning" class="warning" style="display: none;">
-            <marquee behavior="scroll" direction="left">❌ WARNING: ACCESS DENIED! ❌</marquee>
-            <marquee behavior="scroll" direction="right">❌ WARNING: ACCESS DENIED! ❌</marquee>
-        </div>
     </div>
-
-    <marquee behavior="scroll" direction="left">LEAVE THE SITE NOW! RISK DETECTED!</marquee>
-    <marquee behavior="scroll" direction="right">ENTER BY USING CODE</marquee>
 
     <footer>
         © 2025 royalstar | Make the Future with advanced technology.
@@ -70,9 +63,6 @@
                 setTimeout(() => {
                     window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
                 }, 3000);
-            } else {
-                document.getElementById("warning").style.display = "block";
-                alert("❌ Access Denied! Try Again.");
             }
         }
 
@@ -85,3 +75,4 @@
     </script>
 </body>
 </html>
+
