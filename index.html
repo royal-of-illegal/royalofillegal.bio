@@ -59,15 +59,17 @@
 
     <script>
         async function checkAnswer() {
-            let userName = document.getElementById("answer").value;
-            let hash = await sha256(userName);
-            
-            // Correct password's SHA-256 hash (password: "password")
-            const correctHash = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd8f48e99b79f7d0a92";
+            let userInput = document.getElementById("answer").value;
+            let hash = await sha256(userInput);
+
+            // SHA-256 hash of "deepikadivyamanjula"
+            const correctHash = "3a32ea6c9d67ea7061a369bf399272a5d161a9e30b1f642ca787ee2f0b284c85";
 
             if (hash === correctHash) {
                 alert("✅ Access Granted! Redirecting...");
-                window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
+                setTimeout(() => {
+                    window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
+                }, 3000);
             } else {
                 document.getElementById("warning").style.display = "block";
                 alert("❌ Access Denied! Try Again.");
