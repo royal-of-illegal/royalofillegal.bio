@@ -61,21 +61,24 @@
             let userInput = document.getElementById("answer").value.trim();
             let hash = await sha256(userInput);
 
-
+            // 
             const correctHash = "5f65b24d6d7a476c91b82e3cc8dbcbcf8c453d7d60d8df90a47baf9731dbd40d";
 
             let warning = document.getElementById("warning-message");
 
             if (hash === correctHash) {
-                warning.style.display = "none"; // Hide warning
-                document.body.style.backgroundColor = "black"; // Reset background
+                document.body.style.backgroundColor = "black"; // Keep normal background
+                warning.style.display = "none"; // Ensure warning is hidden
                 setTimeout(() => {
                     window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
                 }, 500); // Redirect in 0.5 seconds
             } else {
                 document.body.style.backgroundColor = "red"; // Turn site red
                 warning.style.display = "block"; // Show warning
-                alert("⚠️ WARNING: Unauthorized Access Attempt Detected!"); // Alert user
+                setTimeout(() => {
+                    warning.style.display = "none"; // Hide warning after 3 seconds
+                    document.body.style.backgroundColor = "black"; // Reset background
+                }, 3000);
             }
         }
 
