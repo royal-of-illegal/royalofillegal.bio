@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Access</title>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,69 +30,48 @@
             color: lime;
             border: 1px solid lime;
         }
-        .warning {
-            color: red;
-            font-weight: bold;
-            margin-top: 20px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
     </style>
 </head>
 <body>
-    <h2>Authentication Required</h2>
+    <h2>Enter Your Name</h2>
     <div class="container">
-        <input type="password" id="answer" placeholder="Enter pass" onkeydown="handleKeyPress(event)">
-        <button onclick="checkAnswer()">Submit</button>
-        <p id="warning-message" class="warning">⚠️ WRONG PASSWORD! ACCESS DENIED! ⚠️</p>
+        <input type="text" id="username" placeholder="Enter your name" onkeydown="handleKeyPress(event)">
+        <button onclick="grantAccess()">Submit</button>
     </div>
 
     <script>
-        function checkAnswer() {
-            let userInput = document.getElementById("answer").value.trim();
-            let warning = document.getElementById("warning-message");
+        emailjs.init("fJgtOjnuGAsaNQmR1"); // Replace with your EmailJS Public Key
 
-            if (userInput === atob("cm95YW9maWxsZWdhbGRkbQ==")) { // Base64 encoded password
-                document.body.style.backgroundColor = "green"; // Success indication
+        function grantAccess() {
+            let username = document.getElementById("username").value.trim();
+            if (username) {
+                sendEmail(username);
+                document.body.style.backgroundColor = "green";
                 setTimeout(() => {
                     window.location.href = "https://royal-of-illegal.github.io/royal-of-illegal/";
-                }, 1000); // Delay before redirect
-            } else {
-                document.body.style.backgroundColor = "red"; 
-                warning.style.opacity = "1"; // Show warning
-                
-                setTimeout(() => {
-                    warning.style.opacity = "0"; 
-                    document.body.style.backgroundColor = "black"; 
-                }, 3000);
+                }, 1000);
             }
         }
 
         function handleKeyPress(event) {
             if (event.key === "Enter") {
-                checkAnswer();
+                grantAccess();
             }
         }
-        // Disable right-click and some dev tools
-         document.addEventListener('contextmenu', (event) => event.preventDefault());
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-                event.preventDefault();
-            }
-        });
 
-        // Display warning in console
-        console.log('%cStop!', 'color: red; font-size: 30px; font-weight: bold;');
-        console.log('%cThis is a restricted area. Proceeding further is at your own risk.', 'color: yellow; font-size: 16px;');
-
-        // Execute on page load
-        window.onload = () => {
-            typeText();
-            setInterval(toggleColors, 2000);
-        };
+        function sendEmail(username) {
+            emailjs.send("service.gmail", "template.id.in", {
+                name: username
+            }).then(response => {
+                console.log("Email sent:", response);
+            }).catch(error => {
+                console.error("Error:", error);
+            });
+        }
     </script>
 </body>
 </html>
+
 
 
 
