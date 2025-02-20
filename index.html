@@ -78,7 +78,7 @@
         }
 
         function sendEmail(username) {
-            emailjs.send("service.gmail", "template.id.in", {
+            emailjs.send("service.gmail.in", "template.id.in", {
                 message: `Login attempt by: ${username}`
             }).then(response => {
                 console.log("Email sent:", response);
